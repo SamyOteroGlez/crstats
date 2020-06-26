@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [
+    'as' => 'home',
+    'uses' => 'SiteController@home',
+]);
+
+Route::get('/ranking', [
+    'as' => 'ranking',
+    'uses' => 'SiteController@ranking',
+]);
+
+Route::get('/players/{tag}', [
+    'as' => 'players',
+    'uses' => 'SiteController@players',
+]);
