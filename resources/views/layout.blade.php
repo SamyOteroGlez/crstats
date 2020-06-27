@@ -4,14 +4,22 @@
 
         <title>{{ env('APP_NAME') }}</title>
 
+
+
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
             crossorigin="anonymous">
         <link rel="stylesheet" type="text/css"
             href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/cr-1.5.2/r-2.2.5/datatables.min.css"/>
+        <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
 
         @yield('css')
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('/css/images/ui/favicon.png') }}"/>
+
+    </head>
 
     <body>
 
@@ -35,6 +43,9 @@
                         <a class="nav-item nav-link @if(isRoute('ranking'))active @endif" href="{{ route('ranking') }}">
                             Ranking
                         </a>
+                        <a class="nav-item nav-link @if(isRoute('clan-war'))active @endif" href="{{ route('clan.war') }}">
+                            Guerra
+                        </a>
                     </div>
                 </div>
 
@@ -46,11 +57,16 @@
 
         <div class="container mt-5">
 
-            @yield('content')
+            @yield('body')
 
         </div>
 
-        <footer class="mt-5"></footer>
+        <footer class="mt-5" height="200px">
+            <div class="container">
+
+            </div>
+            <div class="clearfix"></div>
+        </footer>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

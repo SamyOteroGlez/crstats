@@ -29,3 +29,8 @@ Route::get('/players/{tag}', [
     'as' => 'players',
     'uses' => 'SiteController@players',
 ]);
+
+Route::get('/clan-war', [
+    'as' => 'clan.war',
+    'uses' => 'SiteController@clanWar',
+]);

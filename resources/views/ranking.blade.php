@@ -1,12 +1,6 @@
-@extends('layout')
+@extends('layout_pages')
 
-@section('header')
-
-    @include('_banner')
-
-@stop
-
-@section('content')
+@section('content_pages')
 
     <div class="table-responsive">
 
@@ -14,20 +8,17 @@
 
             <h5 class="card-header text-white bg-dark">Ranking</h5>
 
-            <div class="card-body">
+            <div class="card-body table-responsive">
 
                 <table id="ranking" class="table table-hover">
 
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Ranking</th>
+                            <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Trofeos</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Arena</th>
-                            <th scope="col">Tag</th>
-                            <th scope="col">Nonaciones</th>
+                            <th scope="col">Nivel</th>
+                            <th scope="col">Arena/Liga</th>
                         </tr>
                     </thead>
 
@@ -40,12 +31,14 @@
                             <td>
                                 <a href="{{ route('players', [playerTagParser($player['tag'])]) }}">{{ $player['name'] }}</a>
                             </td>
-                            <td>{{ $player['trophies'] }}</td>
-                            <td>{{ $player['expLevel'] }}</td>
-                            <td>{{ $player['role'] }}</td>
+                            <td>
+                                <image src="{{ asset('/images/ui/trophy.png') }}" width="30px" title="Trofeos"></image>
+                                {{ $player['trophies'] }}
+                            </td>
+                            <td>
+                                <image src="{{ asset('/images/levels/' . $player['expLevel'] . '.png') }}" width="40px" title="Nivel"></image>
+                            </td>
                             <td>{{ $player['arena']['name'] }}</td>
-                            <td>{{ $player['tag'] }}</td>
-                            <td>{{ $player['donations'] }}</td>
                         </tr>
 
                         @endforeach

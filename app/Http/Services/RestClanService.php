@@ -32,7 +32,7 @@ class RestClanService
      *
      * @return array
      */
-    public function clan()
+    public function data()
     {
         $response = $this->http->get(env('CR_API_CLAN'));
 
@@ -47,8 +47,10 @@ class RestClanService
     public function currentWar()
     {
         $response = $this->http->get(env('CR_API_CLAN_CURRENT_WAR'));
+        $war = json_decode($response->getBody(), false);
+        $war->participants = collect($war->participants)->sortByDesc('wins');
 
-        return json_decode($response->getBody(), false);
+        return $war;
     }
 
     /**

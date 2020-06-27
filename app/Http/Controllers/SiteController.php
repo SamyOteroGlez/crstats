@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\RestClanService;
+use App\Http\Services\RestCardsService;
 use App\Http\Services\RestMembersService;
 
 class SiteController extends Controller
@@ -13,15 +14,10 @@ class SiteController extends Controller
      *
      * @return view
      */
-    public function home(RestClanService $service)
+    public function home(RestClanService $clan)
     {
-        //dump($service->clan());
-        //dump($service->currentWar());
-        //dump($service->warLog());
         return view('home', [
-            'clan' => $service->clan(),
-            'war' => $service->currentWar(),
-            //'warLog' => $service->warLog(),
+            'clan' => $clan->data(),
         ]);
     }
 
@@ -32,10 +28,10 @@ class SiteController extends Controller
      *
      * @return view
      */
-    public function ranking(RestMembersService $service)
+    public function ranking(RestMembersService $members)
     {
         return view('ranking', [
-            'players' => $service->members()['items']
+            'players' => $members->all()['items']
         ]);
     }
 
@@ -47,11 +43,22 @@ class SiteController extends Controller
      *
      * @return view
      */
-    public function players(RestMembersService $service, string $tag)
+    public function players(RestMembersService $members, RestCardsService $cards, string $tag)
     {
         return view('players', [
-            'player' => $service->players($tag),
-            'chests' => $service->chests($tag),
+            'player' => $members->player($tag),
+            'chests' => $members->chests($tag),
+            'totalCards' => $cards->count(),
+        ]);
+    }
+
+    public function clanWar(RestClanService $clan)
+    {
+        //dump($service->currentWar());
+        //dump($service->warLog());
+        return view('clan-war', [
+            'war' => $clan->currentWar(),
+            //'warLog' => $service->warLog(),
         ]);
     }
 }

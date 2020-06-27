@@ -1,0 +1,22 @@
+body {
+    font-family: "CRFont",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",Roboto,
+        "Helvetica Neue",
+        Arial,"Noto Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+        ;
+    font-size: 12px;
+    font-weight: 100;
+    background: #f2f2f2;
+}
+
+footer {
+    height: 300px;
+    background-color: white;;
+}
