@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 use GuzzleHttp\Client;
 
-class RestClanService
+class RestLocationsService
 {
     /**
      * Guzzle client.
@@ -28,40 +28,25 @@ class RestClanService
     }
 
     /**
-     * Get clan data.
+     * Get clan international ranking.
      *
      * @return array
      */
-    public function data()
+    public function clansInternational()
     {
-        $response = $this->http->get(env('CR_API_CLAN'));
+        $response = $this->http->get(env('CR_API_CLAN_TOP_100'));
 
         return json_decode($response->getBody(), false);
     }
 
     /**
-     * Get clan current war data.
+     * Get clan international ranking.
      *
      * @return array
      */
-    public function currentWar()
+    public function clansLocation()
     {
-        $response = $this->http->get(env('CR_API_CLAN_CURRENT_WAR'));
-        $war = json_decode($response->getBody(), false);
-        $war->participants = collect($war->participants)->sortByDesc('wins');
-        $war->clans = collect($war->clans)->sortByDesc('wins');
-
-        return $war;
-    }
-
-    /**
-     * Get clan war logs.
-     *
-     * @return array
-     */
-    public function warLog()
-    {
-        $response = $this->http->get(env('CR_API_CLAN_WAR_LOG'));
+        $response = $this->http->get(env('CR_API_CLAN_LOCAL_TOP_100'));
 
         return json_decode($response->getBody(), false);
     }

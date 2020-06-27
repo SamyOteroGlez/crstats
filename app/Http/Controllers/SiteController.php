@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\RestClanService;
 use App\Http\Services\RestCardsService;
 use App\Http\Services\RestMembersService;
+use App\Http\Services\RestLocationsService;
 
 class SiteController extends Controller
 {
@@ -14,10 +15,13 @@ class SiteController extends Controller
      *
      * @return view
      */
-    public function home(RestClanService $clan)
+    public function home(RestClanService $clan, RestLocationsService $rankings)
     {
         return view('home', [
             'clan' => $clan->data(),
+            'current_war' =>$clan->currentWar()->clans,
+            'clan_international' => $rankings->clansInternational(),
+            'clan_local' => $rankings->clansLocation(),
         ]);
     }
 
@@ -54,8 +58,7 @@ class SiteController extends Controller
 
     public function clanWar(RestClanService $clan)
     {
-        //dump($service->currentWar());
-        //dump($service->warLog());
+        //dump($clan->warLog());
         return view('clan-war', [
             'war' => $clan->currentWar(),
             //'warLog' => $service->warLog(),

@@ -8,16 +8,11 @@
     <div class="jumbotron-background"></div>
 
     <div class="container text-white">
-        <img src="{{ env('CLAN_BADGE') }}" width="100px" class="rounded float-right" alt="Clan Badge">
-        <h1 class="display-4">{{ $clan->name }}</h1>
+        <h1 class="display-3 mb-5">{{ $clan->name }}</h1>
         <p class="lead">{{ $clan->description }}</p>
         <hr class="my-4">
-        <p>
-            <b>Score:</b> {{ $clan->clanScore}} -
-            <b>Requeridos:</b> {{ $clan->requiredTrophies }} -
-            <b>Donaciones por semana:</b> {{ $clan->donationsPerWeek}} -
-            <b>Miembros:</b> {{ $clan->members }}
-        </p>
+
         <a class="btn btn-outline-secondary" href="{{ route('ranking') }}">Ranking</a>
+        <a class="btn btn-outline-secondary" href="{{ route('clan.war') }}">Guerra</a>
     </div>
 </div>

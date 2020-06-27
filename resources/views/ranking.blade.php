@@ -2,11 +2,13 @@
 
 @section('content_pages')
 
+    <h2 class="mb-3">Ranking</h2>
+
     <div class="table-responsive">
 
         <div class="card">
 
-            <h5 class="card-header text-white bg-dark">Ranking</h5>
+            <h5 class="card-header text-white bg-dark">Miembros</h5>
 
             <div class="card-body table-responsive">
 
@@ -37,6 +39,7 @@
                             </td>
                             <td>
                                 <image src="{{ asset('/images/levels/' . $player['expLevel'] . '.png') }}" width="40px" title="Nivel"></image>
+                                <span style="font-size: 0;">{{ $player['expLevel'] }}</span>
                             </td>
                             <td>{{ $player['arena']['name'] }}</td>
                         </tr>
