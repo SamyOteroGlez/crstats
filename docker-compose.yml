@@ -11,20 +11,6 @@ services:
         networks:
             - dev-network
 
-    nginx:
-        image: nginx:1.15-alpine
-        ports:
-            - "81:80"
-            - "444:443"
-        volumes:
-            - ./data/nginx:/etc/nginx/conf.d
-
-    certbot:
-        image: certbot/certbot
-        volumes:
-            - ./data/certbot/conf:/etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
-
 networks:
     dev-network:
         driver: bridge
