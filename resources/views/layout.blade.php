@@ -38,12 +38,6 @@
                     {{ env('CLAN_NAME') }}
                 </a>
 
-                <button class="navbar-toggler" type="button"
-                    data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link @if(isRoute('home'))active @endif" href="{{ route('home') }}">
@@ -57,6 +51,19 @@
                         </a>
                     </div>
                 </div>
+
+                <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+                    <input id="input-search" class="form-control form-control-sm mr-sm-2"
+                        type="search" placeholder="Buscar jugador" aria-label="Search">
+                    <button id="btn-search" class="btn btn-sm btn-outline-secondary my-2 my-sm-0"
+                        type="button">Buscar</button>
+                </form>
+
+                <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
             </div>
 
@@ -129,6 +136,42 @@
                 } else {
                     $('#move-top').fadeOut(options);
                 }
+            });
+
+            //input-search
+            //btn-search
+            $('#btn-search').on('click', function() {
+                var name = $('#input-search').val();
+
+                $.ajax({
+                    url: '/api/player/' +  $('#input-search').val(),
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        player_name: name,
+                    },
+                    success: function (response) {
+                        if (response.player) {
+                            window.location = '/players/' + response.player.tag;
+                        } else {
+                            var msg = 'No se encontraron resultados';
+
+                            if ('' !== name) {
+                                msg = msg + ' para: "' + name + '"';
+                            }
+                            msg = msg + '.';
+                            msg = msg + ' El nombre buscado debe ser exactamente igual al nombre del jugador, '
+                                      + 'respetando mayusculas, signos, caracteres especiales, etc.';
+                            msg = msg + ' Por favor intentelo de nuevo';
+
+                            alert(msg);
+                        }
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //
+                    }
+                });
             });
 
             $("#move-top").click(function () {
