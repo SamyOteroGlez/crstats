@@ -8,7 +8,7 @@
     <div class="jumbotron-background"></div>
 
     <div class="container text-center">
-        <h2 class="display-3">{{ env('CLAN_NAME') }}</h2>
+        <h2 class="display-5">{{ env('CLAN_NAME') }}</h2>
     </div>
 
 </div>
