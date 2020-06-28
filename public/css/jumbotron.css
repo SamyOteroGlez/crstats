@@ -1,0 +1,28 @@
+.jumbotron {
+    position:relative;
+    overflow:hidden;
+    border-radius: 0;
+}
+
+.jumbotron .container {
+    position:relative;
+    z-index:2;
+    background:rgba(0,0,0,0.7);
+    padding:2rem;
+}
+
+.jumbotron-background {
+    background-image: url('https://d.newsweek.com/en/full/828454/clash-royale-victory-gold-anniversary-event-modern-retro-challenge-free-chest.jpg');
+    background-position: center;
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    z-index:1;
+    width:100vw;
+    height:100%;
+    opacity:0.5;
+
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+}
