@@ -8,7 +8,7 @@
     <div class="jumbotron-background"></div>
 
     <div class="container text-white">
-        <h1 class="display-3 mb-5">{{ $clan->name }}</h1>
+        <h1 class="display-5 mb-5">{{ $clan->name }}</h1>
         <p class="lead">{{ $clan->description }}</p>
         <hr class="my-4">
 
