@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use Exception;
 use GuzzleHttp\Client;
 
 class RestClanService
@@ -49,7 +50,12 @@ class RestClanService
         $response = $this->http->get(env('CR_API_CLAN_CURRENT_WAR'));
         $war = json_decode($response->getBody(), false);
         $war->participants = collect($war->participants)->sortByDesc('wins');
-        $war->clans = collect($war->clans)->sortByDesc('wins');
+
+        try {
+            $war->clans = collect($war->clans)->sortByDesc('wins');
+        } catch (Exception $ex) {
+            $war->clans = null;
+        }
 
         return $war;
     }

@@ -24,6 +24,7 @@
 <hr/>
 <div class="clearfix"></div>
 
+@if ($war->clans)
 <h2 class="mt-4 mb-3">Ranking</h2>
 
 <div class="card">
@@ -72,6 +73,7 @@
 </div>
 <hr/>
 <div class="clearfix"></div>
+@endif
 
 <h2 class="mt-4 mb-3">
     Participantes

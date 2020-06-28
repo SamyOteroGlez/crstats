@@ -156,7 +156,7 @@
         <div class="card-body">
             <div class="row">
             @foreach ($player->currentDeck as $deck)
-                <div class="card text-white bg-dark mb-3 mr-1" style="width: 12rem;">
+                <div class="card text-white bg-dark mb-3 mr-1 ml-1 rounded-lg" style="width: 13rem;">
                     <img src="{{ $deck->iconUrls->medium }}" class="card-img-top" title="{{ $deck->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $deck->name }}</h5>
@@ -173,7 +173,7 @@
             <hr/>
             <h6 class="card-subtitle mb-2 text-muted">Carta Favorita</h6>
             <div class="row">
-                <div class="card text-white bg-dark mb-3 mr-1" style="width: 12rem;">
+                <div class="card text-white bg-dark mb-3 mr-1 ml-1 rounded-lg" style="width: 12rem;">
                     <img src="{{ $player->currentFavouriteCard->iconUrls->medium }}" class="card-img-top" title="{{ $player->currentFavouriteCard->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $player->currentFavouriteCard->name }}</h5>
@@ -201,7 +201,7 @@
         <div class="card-body">
             <div class="row">
             @foreach ($player->cards as $card)
-                <img src="{{ $card->iconUrls->medium }}" width="100px class="rounded float-left" title="{{ $card->name }}">
+                <img src="{{ $card->iconUrls->medium }}" width="100px class="rounded float-left mr-1 ml-1" title="{{ $card->name }}">
             @endforeach
             </div>
 
@@ -220,7 +220,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
         integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
         crossorigin="anonymous"></script>
-
 
         <script>
 
