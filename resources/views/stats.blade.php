@@ -2,7 +2,9 @@
 
 @section('content_pages')
 
-<h2 class="mt-4 mb-3">Stats</h2>
+<h2 class="mt-4 mb-3">
+    {{ trans('html.stats.stats') }}
+</h2>
 
 <div class="row">
 
@@ -10,7 +12,7 @@
 
         <div class="card">
             <h5 class="card-header text-white bg-dark">
-                % Victorias / % Derrotas
+                {{ trans('html.stats.win_losses') }}
             </h5>
 
             <div class="card-body">
@@ -37,7 +39,7 @@
 <hr/>
 <div class="clearfix"></div>
 
-<h2 class="mt-4 mb-3">Ranking</h2>
+<h2 class="mt-4 mb-3">{{ trans('html.stats.ranking') }}</h2>
 
 <div class="row">
 
@@ -45,7 +47,7 @@
 
         <div class="card">
             <h5 class="card-header text-white bg-dark">
-                % Victorias
+                {{ trans('html.stats.wins') }}
             </h5>
 
             <div class="card-body table-responsive">
@@ -54,10 +56,10 @@
 
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">% victorias</th>
-                            <th scope="col">% derrotas</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Trofeos</th>
+                            <th scope="col">{{ trans('html.stats.wins') }}</th>
+                            <th scope="col">{{ trans('html.stats.losses') }}</th>
+                            <th scope="col">{{ trans('html.stats.name') }}</th>
+                            <th scope="col">{{ trans('html.stats.trophies') }}</th>
                             <th scope="col">#</th>
                         </tr>
                     </thead>
@@ -70,10 +72,11 @@
                             <td>{{ $player->win_percent }} </td>
                             <td>{{ $player->losses_percent }} </td>
                             <td>
-                                <a href="{{ route('players', [playerTagParser($player->tag)]) }}">{{ $player->name }}</a>
+                                <a href="{{ route('players', [tagParser($player->tag)]) }}">{{ $player->name }}</a>
                             </td>
                             <td>
-                                <image src="{{ asset('/images/ui/trophy.png') }}" width="30px" title="Trofeos"></image>
+                                <image src="{{ asset('/images/ui/trophy.png') }}" width="30px"
+                                    title="{{ trans('html.stats.trophies') }}"></image>
                                 {{ $player->trophies }}
                             </td>
                             <td>{{ $player->clanRank }}</td>
@@ -118,7 +121,7 @@
                 data: {
                     labels: {{ json_encode($players->graphs_x_win_losses_percent) }},
                     datasets: [{
-                        label: 'Ranking / Victorias %',
+                        label: '{{ trans("html.stats.ranking_wins") }}',
                         data: {{ json_encode($players->graphs_y_win_percent) }},
                         backgroundColor:'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
@@ -130,7 +133,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Ranking'
+                                labelString: '{{ trans("html.stats.ranking") }}'
                             }
                         }],
                         yAxes: [{
@@ -143,7 +146,7 @@
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: '% Victorias'
+                                labelString: '{{ trans("html.stats.wins") }}'
                             }
                         }]
                     }
@@ -156,7 +159,7 @@
                 data: {
                     labels: {{ json_encode($players->graphs_x_win_losses_percent) }},
                     datasets: [{
-                        label: 'Ranking / Derrotas %',
+                        label: '{{ trans("html.stats.ranking_losses") }}',
                         data: {{ json_encode($players->graphs_y_losses_percent) }},
                         backgroundColor:'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',
@@ -168,7 +171,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Ranking'
+                                labelString: '{{ trans("html.stats.ranking") }}'
                             }
                         }],
                         yAxes: [{
@@ -181,7 +184,7 @@
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: '% Derrotas'
+                                labelString: '{{ trans("html.stats.losses") }}'
                             }
                         }]
                     }

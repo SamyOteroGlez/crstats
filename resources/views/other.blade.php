@@ -2,7 +2,9 @@
 
 @section('content_pages')
 
-<h2 class="mt-4 mb-3">Rankings</h2>
+<h2 class="mt-4 mb-3">
+    {{ trans('html.other.rankings') }}
+</h2>
 
 <div class="row">
 
@@ -10,12 +12,12 @@
 
         <div class="card">
             <h5 class="card-header text-white bg-dark">
-                Ranking Mundial Clanes
+                {{ trans('html.other.world') }}
             </h5>
 
             <div class="card-body table-responsive">
 
-                <h6 class="card-subtitle mb-2 text-muted">Top 100</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ trans('html.other.top') }}</h6>
                 <hr/>
 
                 <table id="clan-international" class="table table-hover">
@@ -23,8 +25,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Clan</th>
-                            <th scope="col">Trofeos</th>
+                            <th scope="col">{{ trans('html.other.clan') }}</th>
+                            <th scope="col">{{ trans('html.other.trophies') }}</th>
                         </tr>
                     </thead>
 
@@ -56,12 +58,12 @@
 
         <div class="card">
             <h5 class="card-header text-white bg-dark">
-                Ranking Local Clanes
+                {{ trans('html.other.local') }}
             </h5>
 
             <div class="card-body table-responsive">
 
-                <h6 class="card-subtitle mb-2 text-muted">Top 100</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ trans('html.other.top') }}</h6>
                 <hr/>
 
                 <table id="clan-local" class="table table-hover">
@@ -69,8 +71,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Clan</th>
-                            <th scope="col">Trofeos</th>
+                            <th scope="col">{{ trans('html.other.clan') }}</th>
+                            <th scope="col">{{ trans('html.other.trophies') }}</th>
                         </tr>
                     </thead>
 

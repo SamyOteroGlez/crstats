@@ -13,6 +13,9 @@ return [
     |
     */
 
+    'clan_tag' => 'The "Clan" field is required.',
+    'player_tag' => 'The "Players" field is required.',
+
     'accepted' => 'The :attribute must be accepted.',
     'active_url' => 'The :attribute is not a valid URL.',
     'after' => 'The :attribute must be a date after :date.',

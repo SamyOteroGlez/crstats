@@ -36,11 +36,32 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\CacheHeader::class,
+            \App\Http\Middleware\Locale::class,
         ],
 
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'flush-tag' => [
+            \App\Http\Middleware\FlushTagsMiddleware::class,
+        ],
+
+        'default-clan' => [
+            \App\Http\Middleware\DefaultClanMiddleware::class,
+        ],
+
+        'clan-tag' => [
+            \App\Http\Middleware\ClanTagMiddleware::class,
+        ],
+
+        'player-tag' => [
+            \App\Http\Middleware\PlayerTagMiddleware::class,
+        ],
+
+        'check-tag-session' => [
+            \App\Http\Middleware\CheckTagSessionMiddleware::class,
         ],
     ];
 

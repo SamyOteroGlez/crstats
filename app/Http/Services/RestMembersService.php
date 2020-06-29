@@ -34,7 +34,7 @@ class RestMembersService
      */
     public function all()
     {
-        $response = $this->http->get(env('CR_API_MEMBERS'));
+        $response = $this->http->get(session('CR.CR_API_MEMBERS'));
         $members = json_decode($response->getBody(), false);
         $members->items = collect($members->items);
 
@@ -50,8 +50,8 @@ class RestMembersService
      */
     public function player(string $tag)
     {
-        $tag = playerTagParser($tag);
-        $response = $this->http->get(env('CR_API_PLAYERS') . '/' . $tag);
+        $tag = tagParser($tag);
+        $response = $this->http->get(session('CR.CR_API_PLAYERS') . '/' . $tag);
         $player = json_decode($response->getBody(), false);
 
         return $this->preparePlayer($player);
@@ -303,8 +303,8 @@ class RestMembersService
      */
     public function chests(string $tag)
     {
-        $tag = playerTagParser($tag);
-        $response = $this->http->get(env('CR_API_PLAYERS') . '/' . $tag . '/upcomingchests');
+        $tag = tagParser($tag);
+        $response = $this->http->get(session('CR.CR_API_PLAYERS') . '/' . $tag . '/upcomingchests');
         $chests = json_decode($response->getBody(), false);
 
         return $this->prepareChests($chests);
