@@ -18,9 +18,14 @@
 
         <div class="container mt-5">
 
-            <h1 class="mb-5">Clash Royale</h1>
+            <h1 class="mb-4">Clash Royale</h1>
+            <h6 class="card-subtitle mb-5 text-muted">
+                Busca tu clan o cualquier otro usando el tag del clan o busca tu jugador
+                favorito usando el tag del jugador.
+            </h6>
+            <div class="clearfix"></div>
 
-            <div class="row">
+            <div class="row mt-3">
 
                 <div class="col-md-6">
                     <h4>Clanes</h4>
