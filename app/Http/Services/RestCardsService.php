@@ -34,7 +34,7 @@ class RestCardsService
      */
     public function all()
     {
-        $response = $this->http->get(env('CR_API_CARDS'));
+        $response = $this->http->get(session('CR.CR_API_CARDS'));
 
         return json_decode($response->getBody(), false);
     }

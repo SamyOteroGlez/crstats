@@ -34,7 +34,7 @@ class RestLocationsService
      */
     public function clansInternational()
     {
-        $response = $this->http->get(env('CR_API_CLAN_TOP_100'));
+        $response = $this->http->get(session('CR.CR_API_CLAN_TOP_100'));
 
         return json_decode($response->getBody(), false);
     }
@@ -46,7 +46,7 @@ class RestLocationsService
      */
     public function clansLocation()
     {
-        $response = $this->http->get(env('CR_API_CLAN_LOCAL_TOP_100'));
+        $response = $this->http->get(session('CR.CR_API_CLAN_LOCAL_TOP_100'));
 
         return json_decode($response->getBody(), false);
     }

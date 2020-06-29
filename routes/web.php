@@ -11,31 +11,49 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [
+    'as' => 'landing',
+    'uses' => 'SiteController@landing',
+])->middleware('flush-tag');
+
+Route::post('/clan/tag', [
+    'as' => 'clan.tag',
+    'uses' => 'SiteController@clanTag',
+])->middleware(['clan-tag']);
+
+Route::post('/player/tag', [
+    'as' => 'player.tag',
+    'uses' => 'SiteController@playerTag',
+])->middleware('player-tag');
+
+Route::get('/invictus', function () {
     return redirect()->route('home');
+})->middleware('default-clan');
+
+Route::middleware(['check-tag-session'])->group(function () {
+
+    Route::get('/home', [
+        'as' => 'home',
+        'uses' => 'SiteController@home',
+    ]);
+
+    Route::get('/players/{tag}', [
+        'as' => 'players',
+        'uses' => 'SiteController@players',
+    ]);
+
+    Route::get('/clan-war', [
+        'as' => 'clan.war',
+        'uses' => 'SiteController@clanWar',
+    ]);
+
+    Route::get('/other', [
+        'as' => 'other',
+        'uses' => 'SiteController@other',
+    ]);
+
+    Route::get('/stats', [
+        'as' => 'stats',
+        'uses' => 'SiteController@stats',
+    ]);
 });
-
-Route::get('/home', [
-    'as' => 'home',
-    'uses' => 'SiteController@home',
-]);
-
-Route::get('/players/{tag}', [
-    'as' => 'players',
-    'uses' => 'SiteController@players',
-]);
-
-Route::get('/clan-war', [
-    'as' => 'clan.war',
-    'uses' => 'SiteController@clanWar',
-]);
-
-Route::get('/other', [
-    'as' => 'other',
-    'uses' => 'SiteController@other',
-]);
-
-Route::get('/stats', [
-    'as' => 'stats',
-    'uses' => 'SiteController@stats',
-]);

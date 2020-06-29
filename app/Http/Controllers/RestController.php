@@ -36,7 +36,7 @@ class RestController extends Controller
             $player = $players->firstWhere('name', $player_name);
 
             if ($player) {
-                $player['tag'] = playerTagParser($player['tag']);
+                $player['tag'] = tagParser($player['tag']);
                 $result = $player;
             }
         }

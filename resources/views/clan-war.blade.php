@@ -105,7 +105,7 @@
 
                         <tr>
                             <td>
-                                <a href="{{ route('players', [playerTagParser($player->tag)]) }}">{{ $player->name }}</a>
+                                <a href="{{ route('players', [tagParser($player->tag)]) }}">{{ $player->name }}</a>
                             </td>
                             <td>
                                 <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="30px" title="Batallas ganadas"></image>

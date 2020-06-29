@@ -1,13 +1,13 @@
 <?php
 
-if (!function_exists('playerTagParser')) {
+if (!function_exists('tagParser')) {
 
     /**
-     * Parse the tag player.
-     * The tag returns from cr apilike #qwewer, we need to remove the #
+     * Parse the clan or player tag.
+     * The tag returns from cr api like #qwewer, we need to remove the #
      * and replace it for a %23.
      */
-    function playerTagParser(string $tag)
+    function tagParser(string $tag)
     {
         $parsed = str_replace("#", "%23", $tag);
 

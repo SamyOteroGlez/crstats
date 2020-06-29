@@ -35,7 +35,7 @@ class RestClanService
      */
     public function data()
     {
-        $response = $this->http->get(env('CR_API_CLAN'));
+        $response = $this->http->get(session('CR.CR_API_CLAN'));
 
         return json_decode($response->getBody(), false);
     }
@@ -47,7 +47,7 @@ class RestClanService
      */
     public function currentWar()
     {
-        $response = $this->http->get(env('CR_API_CLAN_CURRENT_WAR'));
+        $response = $this->http->get(session('CR.CR_API_CLAN_CURRENT_WAR'));
         $war = json_decode($response->getBody(), false);
         $war->participants = collect($war->participants)->sortByDesc('wins');
 
@@ -67,7 +67,7 @@ class RestClanService
      */
     public function warLog()
     {
-        $response = $this->http->get(env('CR_API_CLAN_WAR_LOG'));
+        $response = $this->http->get(session('CR.CR_API_CLAN_WAR_LOG'));
 
         return json_decode($response->getBody(), false);
     }
