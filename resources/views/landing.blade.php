@@ -18,8 +18,15 @@
 
         <div class="container mt-5">
 
-            <h1 class="mb-4">Clash Royale</h1>
-            <h6 class="card-subtitle mb-5 text-muted">
+            <h1 class="mb-3">Clash Royale</h1>
+            <h6>
+                @lang('html.landing.locale')
+            </h6>
+            <select id="set-locale" class="form-control form-control-sm col-1 bt-5">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+            </select>
+            <h6 class="card-subtitle mt-5 mb-5 text-muted">
                 @lang('html.landing.sub_header')
             </h6>
             <div class="clearfix"></div>
@@ -32,6 +39,7 @@
                     </h4>
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('clan.tag') }}">
                         @csrf
+                        <input id="locale" name="locale" type="hidden" value="">
                         <div class="input-group mb-3">
                             <input type="text"
                                 class="form-control @if($errors->has('clan_tag') || Session::has('no_clan')) is-invalid @endif"
@@ -63,6 +71,7 @@
                     </h4>
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('player.tag') }}">
                         @csrf
+                        <input id="locale" name="locale" type="hidden" value="">
                         <div class="input-group mb-3">
                             <input type="text"
                                 class="form-control @if($errors->has('player_tag') || Session::has('no_player')) is-invalid @endif"

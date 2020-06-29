@@ -3,8 +3,8 @@
 return [
 
     'landing' => [
-        'sub_header' => 'Busca tu clan o cualquier otro usando el tag del clan o busca tu jugador
-                        favorito usando el tag del jugador.',
+        'locale' => 'Idioma',
+        'sub_header' => 'Busca tu clan o jugador favorito usando el tag.',
         'clans_label' => 'Clanes',
         'players_label' => 'Jugadores',
         'submit_btn' => 'Buscar',

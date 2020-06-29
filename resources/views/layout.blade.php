@@ -23,7 +23,6 @@
             <div class="container">
 
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <!-- <img src="{{ env('CLAN_BADGE') }}" width="50px" class="rounded" alt="Clan Badge"> -->
                     {{ session('CR.CR_CLAN_NAME') }}
                 </a>
 

@@ -9,3 +9,28 @@
     crossorigin="anonymous"></script>
 <script type="text/javascript"
     src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
+
+<script>
+
+    $(window).ready(function () {
+
+        $('#locale').val($('#set-locale').val());
+
+        var locale = localStorage.getItem('locale', locale);
+
+        if (locale) {
+            $('#meta-locale').attr('content', locale);
+            $('#set-locale').val(locale);
+            $('#locale').val(locale);
+        }
+
+        $('#set-locale').on('change', function () {
+            var new_locale = $('#set-locale').val();
+
+            localStorage.setItem('locale', new_locale);
+            $('#meta-locale').attr('content', new_locale);
+            $('#locale').val(new_locale);
+        });
+    });
+
+</script>

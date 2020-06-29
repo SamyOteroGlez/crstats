@@ -3,7 +3,8 @@
 return [
 
     'landing' => [
-        'sub_header' => 'Search for your clan or any other using the clan tag or search for the
+        'locale' => 'Language',
+        'sub_header' => 'Search for your favorite using the clan tag or search for the
                         player you support using the player tag.',
         'clans_label' => 'Clans',
         'players_label' => 'Players',
