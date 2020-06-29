@@ -31,7 +31,7 @@ class PlayerTagMiddleware
             $session = CrSessionsService::newInstance()->playerApi($request->get('player_tag'));
 
             if (!$session) {
-                Session::flash('no_player', 'The player was not found!');
+                Session::flash('no_player', trans('html.landing.player_not_found'));
 
                 return redirect()->route('landing');
             }

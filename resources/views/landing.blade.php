@@ -20,15 +20,16 @@
 
             <h1 class="mb-4">Clash Royale</h1>
             <h6 class="card-subtitle mb-5 text-muted">
-                Busca tu clan o cualquier otro usando el tag del clan o busca tu jugador
-                favorito usando el tag del jugador.
+                @lang('html.landing.sub_header')
             </h6>
             <div class="clearfix"></div>
 
             <div class="row mt-3">
 
                 <div class="col-md-6">
-                    <h4>Clanes</h4>
+                    <h4>
+                        @lang('html.landing.clans_label')
+                    </h4>
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('clan.tag') }}">
                         @csrf
                         <div class="input-group mb-3">
@@ -38,12 +39,14 @@
                                 id="clan_tag" name="clan_tag"
                                 aria-label="Search" aria-describedby="btn-clan-tag">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-dark" type="submit" id="btn-clan-tag">Buscar</button>
+                                <button class="btn btn-outline-dark" type="submit" id="btn-clan-tag">
+                                    @lang('html.landing.submit_btn')
+                                </button>
                             </div>
                         </div>
                         @if($errors->has('clan_tag'))
                         <div class="invalid-feedback" style="display: initial;">
-                         {{ $errors->first('clan_tag') }}
+                         @lang('validation.clan_tag')
                         </div>
                         @endif
                         @if(Session::has('no_clan'))
@@ -55,7 +58,9 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h4>Jugador</h4>
+                    <h4>
+                        @lang('html.landing.players_label')
+                    </h4>
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('player.tag') }}">
                         @csrf
                         <div class="input-group mb-3">
@@ -65,12 +70,14 @@
                                 id="player_tag" name="player_tag"
                                 aria-label="Search" aria-describedby="btn-player-tag">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-dark" type="submit" id="btn-player-tag">Buscar</button>
+                                <button class="btn btn-outline-dark" type="submit" id="btn-player-tag">
+                                    @lang('html.landing.submit_btn')
+                                </button>
                             </div>
                         </div>
                         @if($errors->has('player_tag'))
                         <div class="invalid-feedback" style="display: initial;">
-                         {{ $errors->first('player_tag') }}
+                         @lang('validation.player_tag')
                         </div>
                         @endif
                         @if(Session::has('no_player'))

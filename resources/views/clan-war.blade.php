@@ -2,34 +2,44 @@
 
 @section('content_pages')
 
-<h2 class="mt-4 mb-3">Guerra</h2>
+<h2 class="mt-4 mb-3">
+    {{ trans('html.war.war') }}
+</h2>
 
 <h6 class="card-subtitle mb-2 text-muted">
-        @if('collectionDay' == $war->state) Dia de colleccion @else Dia de batalla @endif
+        @if('collectionDay' == $war->state)
+            {{ trans('html.war.collection_day') }}
+        @else
+            {{ trans('html.war.war_day') }}
+        @endif
     </h6>
 
 <p>
-    <image src="{{ asset('/images/ui/crown-shield.png') }}" width="50px" title="Puntos"></image>
+    <image src="{{ asset('/images/ui/crown-shield.png') }}" width="50px"
+        title="{{ trans('html.war.points') }}"></image>
     {{ $war->clan->clanScore }}
 
-    <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="50px" class="ml-4" title="Batallas ganadas"></image>
+    <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="50px" class="ml-4"
+        title="{{ trans('html.war.win_battles') }}"></image>
     {{ $war->clan->wins }}
 
-    <image src="{{ asset('/images/ui/battle.png') }}" width="50px" class="ml-4" title="Batallas jugadas"></image>
+    <image src="{{ asset('/images/ui/battle.png') }}" width="50px" class="ml-4"
+        title="{{ trans('html.war.battles') }}"></image>
     {{ $war->clan->battlesPlayed }}
 
-    <image src="{{ asset('/images/ui/blue-crown.png') }}" width="50px" class="ml-4" title="Coronas"></image>
+    <image src="{{ asset('/images/ui/blue-crown.png') }}" width="50px" class="ml-4"
+        title="{{ trans('html.war.crowns') }}"></image>
     {{ $war->clan->crowns }}
 </p>
 <hr/>
 <div class="clearfix"></div>
 
 @if ($war->clans)
-<h2 class="mt-4 mb-3">Ranking</h2>
+<h2 class="mt-4 mb-3">{{ trans('html.war.ranking') }}</h2>
 
 <div class="card">
 
-    <h5 class="card-header text-white bg-dark">Clanes</h5>
+    <h5 class="card-header text-white bg-dark">{{ trans('html.war.clans') }}</h5>
 
     <div class="card-body">
         <div class="row">
@@ -37,9 +47,9 @@
 
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Clan</th>
-                        <th scope="col">Trofeos</th>
-                        <th scope="col">Coronas</th>
+                        <th scope="col">{{ trans('html.war.clan') }}</th>
+                        <th scope="col">trophies</th>
+                        <th scope="col">{{ trans('html.war.crowns') }}</th>
                     </tr>
                 </thead>
 
@@ -50,11 +60,13 @@
                     <tr>
                         <td>{{ $wc->name }}</td>
                         <td>
-                            <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="30px" title="Ganados"></image>
+                            <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="30px"
+                                title="{{ trans('html.war.win_battles') }}"></image>
                             {{ $wc->wins }}
                         </td>
                         <td>
-                            <image src="{{ asset('/images/ui/blue-crown.png') }}" width="30px" title="Coronas"></image>
+                            <image src="{{ asset('/images/ui/blue-crown.png') }}" width="30px"
+                                title="{{ trans('html.war.crowns') }}"></image>
                             {{ $wc->crowns }}
                         </td>
                     </tr>
@@ -76,12 +88,12 @@
 @endif
 
 <h2 class="mt-4 mb-3">
-    Participantes
+    {{ trans('html.war.participants') }}
 </h2>
 
 <div class="card">
 
-    <h5 class="card-header text-white bg-dark">Miembros</h5>
+    <h5 class="card-header text-white bg-dark">{{ trans('html.war.members') }}</h5>
 
     <div class="card-body">
         <div class="row">
@@ -92,10 +104,10 @@
 
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Batallas Ganadas</th>
-                            <th scope="col">Batallas</th>
-                            <th scope="col">Cartas</th>
+                            <th scope="col">{{ trans('html.war.name') }}</th>
+                            <th scope="col">{{ trans('html.war.win_battles') }}</th>
+                            <th scope="col">{{ trans('html.war.battles') }}</th>
+                            <th scope="col">{{ trans('html.war.cards') }}</th>
                         </tr>
                     </thead>
 
@@ -108,15 +120,18 @@
                                 <a href="{{ route('players', [tagParser($player->tag)]) }}">{{ $player->name }}</a>
                             </td>
                             <td>
-                                <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="30px" title="Batallas ganadas"></image>
-                                {{ $player->wins }} de {{ $player->numberOfBattles }}
+                                <image src="{{ asset('/images/ui/clan-battle-win.png') }}" width="30px"
+                                    title="{{ trans('html.war.win_battles') }}"></image>
+                                {{ $player->wins }} {{ trans('html.war.x_of_y') }} {{ $player->numberOfBattles }}
                             </td>
                             <td>
-                                <image src="{{ asset('/images/ui/battle.png') }}" width="30px" class="ml-4" title="Batallas jugadas"></image>
-                                {{ $player->battlesPlayed }} de {{ $player->numberOfBattles }}
+                                <image src="{{ asset('/images/ui/battle.png') }}" width="30px" class="ml-4"
+                                    title="{{ trans('html.war.battles') }}"></image>
+                                {{ $player->battlesPlayed }} {{ trans('html.war.x_of_y') }} {{ $player->numberOfBattles }}
                             </td>
                             <td>
-                                <image src="{{ asset('/images/ui/deck.png') }}" width="30px" class="ml-4" title="Cartas ganadas"></image>
+                                <image src="{{ asset('/images/ui/deck.png') }}" width="30px" class="ml-4"
+                                    title="{{ trans('html.war.cards') }}"></image>
                                 {{ $player->cardsEarned }}
                             </td>
                         </tr>

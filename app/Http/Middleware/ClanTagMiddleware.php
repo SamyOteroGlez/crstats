@@ -31,7 +31,7 @@ class ClanTagMiddleware
             $session = CrSessionsService::newInstance()->clanApi($request->get('clan_tag'));
 
             if (!$session) {
-                Session::flash('no_clan', 'The clan was not found!');
+                Session::flash('no_clan', trans('html.landing.clan_not_found'));
 
                 return redirect()->route('landing');
             }

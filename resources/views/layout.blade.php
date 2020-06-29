@@ -36,21 +36,21 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link @if(isRoute('landing'))active @endif" href="{{ route('landing') }}">
-                            Buscar <span class="sr-only">(current)</span>
+                            @lang('html.navbar.search') <span class="sr-only">(current)</span>
                         </a>
 
                         @if(session('CR.CLAN'))
                         <a class="nav-item nav-link @if(isRoute('home'))active @endif" href="{{ route('home') }}">
-                            Inicio <span class="sr-only">(current)</span>
+                            @lang('html.navbar.home') <span class="sr-only">(current)</span>
                         </a>
                         <a class="nav-item nav-link @if(isRoute('clan-war'))active @endif" href="{{ route('clan.war') }}">
-                            Guerra
+                            @lang('html.navbar.war')
                         </a>
                         <a class="nav-item nav-link @if(isRoute('stats'))active @endif" href="{{ route('stats') }}">
-                            Stats
+                            @lang('html.navbar.stats')
                         </a>
                         <a class="nav-item nav-link @if(isRoute('other'))active @endif" href="{{ route('other') }}">
-                            Otros
+                            @lang('html.navbar.other')
                         </a>
                         @endif
                     </div>
@@ -69,7 +69,7 @@
         </div>
 
         <button id="move-top" class="move-top btn btn-outline-dark btn-sm float-right mr-5">
-            Top
+            @lang('html.navbar.top')
         </button>
 
         <footer class="mt-5" height="200px">
@@ -79,29 +79,29 @@
                         <ul class="nav flex-column footer-links">
                             <li class="nav-item">
                                 <a class="nav-link @if(isRoute('landing')) f-active @endif" href="{{ route('landing') }}">
-                                    Buscar
+                                    @lang('html.navbar.search')
                                 </a>
                             </li>
 
                             @if(session('CR.CLAN'))
                             <li class="nav-item">
                                 <a class="nav-link @if(isRoute('home')) f-active @endif" href="{{ route('home') }}">
-                                    Inicio
+                                    @lang('html.navbar.home')
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link @if(isRoute('clan-war')) f-active @endif" href="{{ route('clan.war') }}">
-                                    Guerra
+                                    @lang('html.navbar.war')
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link @if(isRoute('stats')) f-active @endif" href="{{ route('stats') }}">
-                                    Stats
+                                    @lang('html.navbar.stats')
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link @if(isRoute('other')) f-active @endif" href="{{ route('other') }}">
-                                    Otros
+                                    @lang('html.navbar.other')
                                 </a>
                             </li>
                             @endif
