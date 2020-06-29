@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 use App\Http\Services\CrSessionsService;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,11 +24,17 @@ class ClanTagMiddleware
         ]);
 
         if ($validator->fails()) {
-             return redirect()->route('landing')->withInput();
+             return redirect()->route('landing')->withErrors($validator)->withInput();
         }
 
         if ($request->has('clan_tag')) {
             $session = CrSessionsService::newInstance()->clanApi($request->get('clan_tag'));
+
+            if (!$session) {
+                Session::flash('no_clan', 'The clan was not found!');
+
+                return redirect()->route('landing');
+            }
             $request->session()->put('CR', $session);
         }
 

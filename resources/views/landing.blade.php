@@ -27,15 +27,25 @@
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('clan.tag') }}">
                         @csrf
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="#LUU8CPJU"
+                            <input type="text"
+                                class="form-control @if($errors->has('clan_tag') || Session::has('no_clan')) is-invalid @endif"
+                                placeholder="#LUU8CPJU"
                                 id="clan_tag" name="clan_tag"
                                 aria-label="Search" aria-describedby="btn-clan-tag">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-dark" type="submit" id="btn-clan-tag">Buscar</button>
                             </div>
                         </div>
-                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="#LUU8CPJU" aria-label="Search" id="clan_tag" name="clan_tag">
-                        <button class="btn btn-outline-dark my-2 my-sm-0 mt-1" type="submit">Buscar</button> -->
+                        @if($errors->has('clan_tag'))
+                        <div class="invalid-feedback" style="display: initial;">
+                         {{ $errors->first('clan_tag') }}
+                        </div>
+                        @endif
+                        @if(Session::has('no_clan'))
+                        <div class="invalid-feedback" style="display: initial;">
+                         {{ Session::get('no_clan') }}
+                        </div>
+                        @endif
                     </form>
                 </div>
 
@@ -44,15 +54,25 @@
                     <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('player.tag') }}">
                         @csrf
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="#P2VR0GUV"
+                            <input type="text"
+                                class="form-control @if($errors->has('player_tag') || Session::has('no_player')) is-invalid @endif"
+                                placeholder="#P2VR0GUV"
                                 id="player_tag" name="player_tag"
                                 aria-label="Search" aria-describedby="btn-player-tag">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-dark" type="submit" id="btn-player-tag">Buscar</button>
                             </div>
                         </div>
-                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="#P2VR0GUV" aria-label="Search" id="player_tag" name="player_tag">
-                        <button class="btn btn-outline-dark my-2 my-sm-0 mt-1" type="submit">Buscar</button> -->
+                        @if($errors->has('player_tag'))
+                        <div class="invalid-feedback" style="display: initial;">
+                         {{ $errors->first('player_tag') }}
+                        </div>
+                        @endif
+                        @if(Session::has('no_player'))
+                        <div class="invalid-feedback" style="display: initial;">
+                         {{ Session::get('no_player') }}
+                        </div>
+                        @endif
                     </form>
                 </div>
 

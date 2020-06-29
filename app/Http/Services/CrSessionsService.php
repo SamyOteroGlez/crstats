@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class CrSessionsService
 {
@@ -28,7 +29,11 @@ class CrSessionsService
         $cr_api = env('CR_API');
         $tag = $clan_tag;
         $clan_tag = tagParser($tag);
-        $clan = $this->getClan("$cr_api/clans/$clan_tag");
+        $clan = $this->get("$cr_api/clans/$clan_tag");
+
+        if (!$clan) {
+            return null;
+        }
 
         return [
             'CLAN' => true,
@@ -54,16 +59,21 @@ class CrSessionsService
      *
      * @return array
      */
-    protected function getClan(string $url)
+    protected function get(string $url)
     {
         $http = new Client([
             'headers' => [
                 'Authorization' => 'Bearer ' . env('CR_API_TOKEN')
             ]
         ]);
-        $response = $http->get($url);
 
-        return json_decode($response->getBody(), false);
+        try {
+            $response = $http->get($url);
+        } catch (ClientException $ex) {
+            $response = null;
+        }
+
+        return ($response) ? json_decode($response->getBody(), false) : null;
     }
 
     /**
@@ -77,6 +87,11 @@ class CrSessionsService
     {
         $cr_api = env('CR_API');
         $tag = tagParser($player_tag);
+        $player = $this->get("$cr_api/players/$tag");
+
+        if (!$player) {
+            return null;
+        }
 
         return [
             'PLAYER' => true,
