@@ -20,11 +20,6 @@ Route::get('/home', [
     'uses' => 'SiteController@home',
 ]);
 
-Route::get('/ranking', [
-    'as' => 'ranking',
-    'uses' => 'SiteController@ranking',
-]);
-
 Route::get('/players/{tag}', [
     'as' => 'players',
     'uses' => 'SiteController@players',
@@ -33,4 +28,14 @@ Route::get('/players/{tag}', [
 Route::get('/clan-war', [
     'as' => 'clan.war',
     'uses' => 'SiteController@clanWar',
+]);
+
+Route::get('/other', [
+    'as' => 'other',
+    'uses' => 'SiteController@other',
+]);
+
+Route::get('/stats', [
+    'as' => 'stats',
+    'uses' => 'SiteController@stats',
 ]);

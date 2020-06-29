@@ -67,103 +67,61 @@
 <hr/>
 @endif
 
-<h2 class="mt-4 mb-3">Rankings</h2>
-<div class="row">
+<h2 class="mb-3">Ranking</h2>
 
-    <div class="col-lg-6">
+<div class="table-responsive">
 
-        <div class="card">
-            <h5 class="card-header text-white bg-dark">
-                Ranking Mundial Clanes
-            </h5>
+    <div class="card">
 
-            <div class="card-body table-responsive">
+        <h5 class="card-header text-white bg-dark">Miembros</h5>
 
-                <h6 class="card-subtitle mb-2 text-muted">Top 100</h6>
-                <hr/>
+        <div class="card-body table-responsive">
 
-                <table id="clan-international" class="table table-hover">
+            <table id="ranking" class="table table-hover">
 
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Clan</th>
-                            <th scope="col">Trofeos</th>
-                        </tr>
-                    </thead>
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Trofeos</th>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Arena/Liga</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
+                <tbody>
 
-                        @foreach ($clan_international->items as $cr)
+                    @foreach ($players->items as $player)
 
-                        <tr>
-                            <th scope="row">{{ $cr->rank }}</th>
-                            <td>{{ $cr->name }}</td>
-                            <td>{{ $cr->clanScore }} </td>
-                        </tr>
+                    <tr>
+                        <th scope="row">{{ $player->clanRank }}</th>
+                        <td>
+                            <a href="{{ route('players', [playerTagParser($player->tag)]) }}">{{ $player->name }}</a>
+                        </td>
+                        <td>
+                            <image src="{{ asset('/images/ui/trophy.png') }}" width="30px" title="Trofeos"></image>
+                            {{ $player->trophies }}
+                        </td>
+                        <td>
+                            <image src="{{ asset('/images/levels/' . $player->expLevel . '.png') }}" width="40px" title="Nivel"></image>
+                            <span style="font-size: 0;">{{ $player->expLevel }}</span>
+                        </td>
+                        <td>{{ $player->arena->name }}</td>
+                    </tr>
 
-                        @endforeach
+                    @endforeach
 
-                        </tr>
+                    </tr>
 
-                    </tbody>
+                </tbody>
 
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-lg-6">
-
-        <div class="card">
-            <h5 class="card-header text-white bg-dark">
-                Ranking Local Clanes
-            </h5>
-
-            <div class="card-body table-responsive">
-
-                <h6 class="card-subtitle mb-2 text-muted">Top 100</h6>
-                <hr/>
-
-                <table id="clan-local" class="table table-hover">
-
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Clan</th>
-                            <th scope="col">Trofeos</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        @foreach ($clan_local->items as $cr)
-
-                        <tr>
-                            <th scope="row">{{ $cr->rank }}</th>
-                            <td>{{ $cr->name }}</td>
-                            <td>{{ $cr->clanScore }} </td>
-                        </tr>
-
-                        @endforeach
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
+            </table>
 
         </div>
 
     </div>
 
 </div>
-<div class="clearfix"></div>
 
 @stop
 
@@ -172,6 +130,8 @@
 <script>
 
     $(document).ready(function() {
+        $('#ranking').DataTable();
+
         $('#clan-international').DataTable({
             'searching': false
         });
@@ -179,7 +139,7 @@
         $('#clan-local').DataTable({
             'searching': false
         });
-    } );
+    });
 
 </script>
 

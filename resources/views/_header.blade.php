@@ -12,7 +12,6 @@
         <p class="lead">{{ $clan->description }}</p>
         <hr class="my-4">
 
-        <a class="btn btn-outline-secondary" href="{{ route('ranking') }}">Ranking</a>
         <a class="btn btn-outline-secondary" href="{{ route('clan.war') }}">Guerra</a>
     </div>
 </div>

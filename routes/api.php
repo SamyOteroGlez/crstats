@@ -13,16 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::get('/players', [
+//     'as' => 'players',
+//     'uses' => 'RestController@allPlayers',
+// ]);
 
-Route::get('/players', [
-    'as' => 'players',
-    'uses' => 'RestController@allPlayers',
-]);
-
-Route::get('/player/{player_name?}', [
-    'as' => 'player',
-    'uses' => 'RestController@player',
-]);
+// Route::get('/player/{player_name?}', [
+//     'as' => 'player',
+//     'uses' => 'RestController@player',
+// ]);

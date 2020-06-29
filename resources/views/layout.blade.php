@@ -43,21 +43,17 @@
                         <a class="nav-item nav-link @if(isRoute('home'))active @endif" href="{{ route('home') }}">
                             Inicio <span class="sr-only">(current)</span>
                         </a>
-                        <a class="nav-item nav-link @if(isRoute('ranking'))active @endif" href="{{ route('ranking') }}">
-                            Ranking
-                        </a>
                         <a class="nav-item nav-link @if(isRoute('clan-war'))active @endif" href="{{ route('clan.war') }}">
                             Guerra
                         </a>
+                        <a class="nav-item nav-link @if(isRoute('stats'))active @endif" href="{{ route('stats') }}">
+                            Stats
+                        </a>
+                        <a class="nav-item nav-link @if(isRoute('other'))active @endif" href="{{ route('other') }}">
+                            Otros
+                        </a>
                     </div>
                 </div>
-
-                <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-                    <input id="input-search" class="form-control form-control-sm mr-sm-2"
-                        type="search" placeholder="Buscar jugador" aria-label="Search">
-                    <button id="btn-search" class="btn btn-sm btn-outline-secondary my-2 my-sm-0"
-                        type="button">Buscar</button>
-                </form>
 
                 <button class="navbar-toggler" type="button"
                     data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -92,13 +88,18 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if(isRoute('ranking')) f-active @endif" href="{{ route('ranking') }}">
-                                    Ranking
+                                <a class="nav-link @if(isRoute('clan-war')) f-active @endif" href="{{ route('clan.war') }}">
+                                    Guerra
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if(isRoute('clan-war')) f-active @endif" href="{{ route('clan.war') }}">
-                                    Guerra
+                                <a class="nav-link @if(isRoute('stats')) f-active @endif" href="{{ route('stats') }}">
+                                    Stats
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @if(isRoute('other')) f-active @endif" href="{{ route('other') }}">
+                                    Otros
                                 </a>
                             </li>
                         </ul>
@@ -136,42 +137,6 @@
                 } else {
                     $('#move-top').fadeOut(options);
                 }
-            });
-
-            //input-search
-            //btn-search
-            $('#btn-search').on('click', function() {
-                var name = $('#input-search').val();
-
-                $.ajax({
-                    url: '/api/player/' +  $('#input-search').val(),
-                    type: 'GET',
-                    dataType: 'json',
-                    data: {
-                        player_name: name,
-                    },
-                    success: function (response) {
-                        if (response.player) {
-                            window.location = '/players/' + response.player.tag;
-                        } else {
-                            var msg = 'No se encontraron resultados';
-
-                            if ('' !== name) {
-                                msg = msg + ' para: "' + name + '"';
-                            }
-                            msg = msg + '.';
-                            msg = msg + ' El nombre buscado debe ser exactamente igual al nombre del jugador, '
-                                      + 'respetando mayusculas, signos, caracteres especiales, etc.';
-                            msg = msg + ' Por favor intentelo de nuevo';
-
-                            alert(msg);
-                        }
-
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        //
-                    }
-                });
             });
 
             $("#move-top").click(function () {
