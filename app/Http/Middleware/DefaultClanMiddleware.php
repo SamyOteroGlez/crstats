@@ -18,6 +18,8 @@ class DefaultClanMiddleware
     {
         $session = CrSessionsService::newInstance()->clanApi(env('CR_CLAN_TAG'));
         $request->session()->put('CR', $session);
+        $request->session()->put('locale', env('APP_LOCALE'));
+        app()->setLocale(session('locale'));
 
         return $next($request);
     }
