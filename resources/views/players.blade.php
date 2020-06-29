@@ -210,9 +210,6 @@
     </div>
     <div class="clearfix"></div>
 
-
-    <a href="{{ route('ranking') }}" class="btn btn-outline-dark mt-5">Ranking</a>
-
 @stop
 
 @section('scripts')
@@ -225,7 +222,7 @@
 
             var stats_ctx = document.getElementById('stats').getContext('2d');
             var stats = new Chart(stats_ctx, {
-                type: 'doughnut',
+                type: 'pie',
                 data: {
                     datasets: [{
                         label: 'Batallas totales: {{ $player->battleCount }}',
@@ -247,10 +244,9 @@
                         borderWidth: 1
                     }],
                     labels: [
-                        'Derrotas',
-                        'Victorias',
-                        'Empates y 2v2'
-
+                        '{{ $player->losses }} Derrotas',
+                        '{{ $player->wins }} Victorias',
+                        '{{ $player->battleCount - ($player->wins + $player->losses) }} Empates / 2v2'
                     ],
                 },
             });
@@ -264,9 +260,9 @@
                     ],
                     datasets: [
                         {
-                            label: '% de Victorias',
+                            label: '{{ $player->win_percent }} % Victorias',
                             data: [
-                                {{ $player->wins * 100 / ($player->wins + $player->losses) }},
+                                {{ $player->win_percent }},
                             ],
                             backgroundColor: [
                                 'rgba(75, 192, 192, 0.2)',
@@ -278,9 +274,9 @@
                             borderWidth: 1
                         },
                         {
-                            label: '% de Derrotas',
+                            label: '{{ $player->losses_percent }} % Derrotas',
                             data: [
-                                {{ $player->losses * 100 / ($player->wins + $player->losses) }}
+                                {{ $player->losses_percent }}
                             ],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',

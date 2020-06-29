@@ -15,27 +15,12 @@ class SiteController extends Controller
      *
      * @return view
      */
-    public function home(RestClanService $clan, RestLocationsService $rankings)
+    public function home(RestClanService $clan, RestMembersService $members)
     {
         return view('home', [
-            'clan' => $clan->data(),
             'current_war' =>$clan->currentWar()->clans,
-            'clan_international' => $rankings->clansInternational(),
-            'clan_local' => $rankings->clansLocation(),
-        ]);
-    }
-
-    /**
-     * Get the members ranking.
-     *
-     * @param \App\Http\Services\RestMembersService $service
-     *
-     * @return view
-     */
-    public function ranking(RestMembersService $members)
-    {
-        return view('ranking', [
-            'players' => $members->all()['items']
+            'players' => $members->all(),
+            'clan' => $clan->data(),
         ]);
     }
 
@@ -56,12 +41,47 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Get the clan war data.
+     *
+     * @param \App\Http\Services\RestClanService $clan
+     *
+     * @return view
+     */
     public function clanWar(RestClanService $clan)
     {
-        //dump($clan->warLog());
         return view('clan-war', [
             'war' => $clan->currentWar(),
             //'warLog' => $service->warLog(),
+        ]);
+    }
+
+    /**
+     * Get other relevant data.
+     *
+     * @param \App\Http\Services\RestLocationsService $rankings
+     *
+     * @return view
+     */
+    public function other(RestLocationsService $rankings)
+    {
+        return view('other', [
+            'clan_international' => $rankings->clansInternational(),
+            'clan_local' => $rankings->clansLocation(),
+        ]);
+    }
+
+    /**
+     * Get clan players stats.
+     *
+     * @param \App\Http\Services\RestMembersService $members
+     *
+     * @return view
+     */
+    public function stats(RestMembersService $members)
+    {
+        return view('stats', [
+            'players' => $members->stats()
         ]);
     }
 }

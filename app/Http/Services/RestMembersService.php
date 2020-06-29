@@ -35,8 +35,10 @@ class RestMembersService
     public function all()
     {
         $response = $this->http->get(env('CR_API_MEMBERS'));
+        $members = json_decode($response->getBody(), false);
+        $members->items = collect($members->items);
 
-        return json_decode($response->getBody(), true);
+        return $members;
     }
 
     /**
@@ -56,6 +58,30 @@ class RestMembersService
     }
 
     /**
+     * Get players stats.
+     *
+     * @return collection
+     */
+    public function stats()
+    {
+        $players = $this->all();
+        $players->graphs_x_win_losses_percent = [];
+        $players->graphs_y_win_percent = [];
+        $players->graphs_y_losses_percent = [];
+
+        foreach ($players->items as $key => $player) {
+            $players->items[$key] = $this->player($player->tag);
+            $players->items[$key]->clanRank = $player->clanRank;
+            $players->graphs_x_win_losses_percent[] = $player->clanRank;
+            $players->graphs_y_win_percent[] = $players->items[$key]->win_percent;
+            $players->graphs_y_losses_percent[] = $players->items[$key]->losses_percent;
+        }
+        $players->items = collect($players->items)->sortByDesc('win_percent');
+
+        return $players;
+    }
+
+    /**
      * Prepare player data.
      *
      * @param obj $player
@@ -69,6 +95,8 @@ class RestMembersService
         $player->arena->label = $meta->label;
         $player->arena->league = $meta->league;
         $player->arena->tag = $meta->tag;
+        $player->win_percent = round($player->wins * 100 / ($player->wins + $player->losses), 2);
+        $player->losses_percent = round($player->losses * 100 / ($player->wins + $player->losses), 2);
 
         return $player;
     }
