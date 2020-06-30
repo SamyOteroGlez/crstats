@@ -24,7 +24,7 @@ body {
 }
 
 footer {
-    height: 300px;
+    max-height: 500px;
     background-color: white;;
 }
 
@@ -38,4 +38,12 @@ footer {
 
 .footer-links > li > a.f-active {
     color: #484747;
+}
+
+.sm-small {
+    font-size: 70%;
+}
+
+.xs-small {
+    font-size: 60%;
 }

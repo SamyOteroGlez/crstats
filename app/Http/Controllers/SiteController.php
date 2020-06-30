@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClanTagRequest;
 use App\Http\Services\RestClanService;
@@ -126,6 +127,42 @@ class SiteController extends Controller
     {
         return view('stats', [
             'players' => $members->stats()
+        ]);
+    }
+
+    /**
+     * Get the privacy policy.
+     *
+     * @return view
+     */
+    public function policy()
+    {
+        return view('policy', [
+            'policy' => File::get(public_path('legal/privacy.POLICY')),
+        ]);
+    }
+
+    /**
+     * Get the terms and conditions.
+     *
+     * @return view
+     */
+    public function terms()
+    {
+        return view('terms', [
+            'terms' => File::get(public_path('legal/terms.and.CONDITIONS')),
+        ]);
+    }
+
+    /**
+     * Get the disclaimer.
+     *
+     * @return view
+     */
+    public function disclaimer()
+    {
+        return view('disclaimer', [
+            'disclaimer' => File::get(public_path('legal/DISCLAIMER')),
         ]);
     }
 }
