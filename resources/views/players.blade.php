@@ -6,6 +6,7 @@
         <image src="{{ asset('/images/levels/' . $player->expLevel . '.png') }}"
             width="45px" title="{{ trans('html.player.img_lvl') }}"></image>
         {{ $player->name}}
+        <small class="text-muted xs-small">{{ $player->tag }}</small>
     </h2>
 
     <div class="card">
@@ -16,7 +17,19 @@
 
         <div class="card-body">
 
-            <h6 class="card-subtitle mb-2 text-muted">{{ $player->tag }}</h6>
+            @if(property_exists($player, 'clan'))
+            <form class="mb-3" method="POST" action="{{ route('clan.tag') }}">
+                @csrf
+                <input type="hidden" id="clan_tag" name="clan_tag" value="{{ $player->clan->tag }}">
+                Clan:
+                <button class="btn btn-sm btn-outline-dark">
+                {{ $player->clan->name }}
+                </button>
+            </form>
+            @else
+            <h6 class="card-subtitle text-muted mb-3"><small>No Clan</small></h6>
+            @endif
+
             @if(property_exists($player, 'role'))
             <p>
                 <image src="{{ asset('/images/ui/logo.png') }}"
