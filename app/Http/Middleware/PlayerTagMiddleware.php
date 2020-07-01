@@ -28,7 +28,8 @@ class PlayerTagMiddleware
         }
 
         if ($request->has('player_tag')) {
-            $session = CrSessionsService::newInstance()->playerApi($request->get('player_tag'));
+            $tag = strtoupper($request->get('player_tag'));
+            $session = CrSessionsService::newInstance()->playerApi($tag);
 
             if (!$session) {
                 Session::flash('no_player', trans('html.landing.player_not_found'));
