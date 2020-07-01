@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+
+    cr:
+        image: hitalos/laravel:latest
+        ports:
+            - 8088:80
+        volumes:
+            - ./:/var/www
+        networks:
+            - cr-cloverpath
+        deploy:
+            placement:
+                constraints:
+                - node.role == worker
+
+networks:
+    cr-cloverpath:
+        driver: bridge
