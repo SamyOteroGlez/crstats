@@ -1,5 +1,18 @@
 <?php
 
+use Illuminate\Mail\Markdown;
+
+if (!function_exists('markdown')) {
+
+    /**
+     * Parse a markdown file.
+     */
+    function markdown($slot)
+    {
+        return Markdown::parse($slot);
+    }
+}
+
 if (!function_exists('tagParser')) {
 
     /**
@@ -18,7 +31,7 @@ if (!function_exists('tagParser')) {
 if (!function_exists('isRoute')) {
 
     /**
-     * Check if teh current route is the given route.
+     * Check if the current route is the given route.
      */
     function isRoute($route)
     {

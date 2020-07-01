@@ -48,9 +48,6 @@
                         <a class="nav-item nav-link @if(isRoute('stats'))active @endif" href="{{ route('stats') }}">
                             @lang('html.navbar.stats')
                         </a>
-                        <a class="nav-item nav-link @if(isRoute('other'))active @endif" href="{{ route('other') }}">
-                            @lang('html.navbar.other')
-                        </a>
                         @endif
                     </div>
                 </div>
@@ -71,7 +68,7 @@
             @lang('html.navbar.top')
         </button>
 
-        <footer class="mt-5" height="200px">
+        <footer class="mt-5">
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-md-8">
@@ -98,17 +95,42 @@
                                     @lang('html.navbar.stats')
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link @if(isRoute('other')) f-active @endif" href="{{ route('other') }}">
-                                    @lang('html.navbar.other')
-                                </a>
-                            </li>
                             @endif
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <image src="{{ asset('/images/ui/logo.png') }}" width="100px" class="mt-5" title="Clash Royale"></image>
                     </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="container mt-3">
+                <a class="nav-link float-left @if(isRoute('policy')) f-active @endif" href="{{ route('policy') }}">
+                    <small class="sm-small">Privacy Policy</small>
+                </a>
+                <a class="nav-link float-left @if(isRoute('terms')) f-active @endif" href="{{ route('terms') }}">
+                    <small class="sm-small">Terms and Conditions</small>
+                </a>
+                <a class="nav-link float-left @if(isRoute('disclaimer')) f-active @endif" href="{{ route('disclaimer') }}">
+                    <small class="sm-small">Disclaimer</small>
+                </a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="container mt-3">
+            <hr/>
+                <div class="mb-2">
+                    <p>
+                        <small class="xs-small">
+                            This material is unofficial and is not endorsed by Supercell.
+                            For more information see Supercell's Fan Content Policy:
+                            <a href="https://www.supercell.com/fan-content-policy" target="_blank">
+                                www.supercell.com/fan-content-policy
+                            </a>.
+                        </small>
+                    </p>
                 </div>
             </div>
             <div class="clearfix"></div>

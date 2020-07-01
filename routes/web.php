@@ -47,13 +47,28 @@ Route::middleware(['check-tag-session'])->group(function () {
         'uses' => 'SiteController@clanWar',
     ]);
 
-    Route::get('/other', [
-        'as' => 'other',
-        'uses' => 'SiteController@other',
-    ]);
-
     Route::get('/stats', [
         'as' => 'stats',
         'uses' => 'SiteController@stats',
+    ]);
+
+    // Route::get('/other', [
+    //     'as' => 'other',
+    //     'uses' => 'SiteController@other',
+    // ]);
+
+    Route::get('/policy', [
+        'as' => 'policy',
+        'uses' => 'SiteController@policy',
+    ]);
+
+    Route::get('/terms', [
+        'as' => 'terms',
+        'uses' => 'SiteController@terms',
+    ]);
+
+    Route::get('/disclaimer', [
+        'as' => 'disclaimer',
+        'uses' => 'SiteController@disclaimer',
     ]);
 });

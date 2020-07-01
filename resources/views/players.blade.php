@@ -17,11 +17,13 @@
         <div class="card-body">
 
             <h6 class="card-subtitle mb-2 text-muted">{{ $player->tag }}</h6>
+            @if(property_exists($player, 'role'))
             <p>
                 <image src="{{ asset('/images/ui/logo.png') }}"
                     width="90px" title="{{ trans('html.player.img_role') }}"></image>
                 {{ $player->role }}
             </p>
+            @endif
 
             <h5 class="card-title">
                 <image src="{{ asset('/images' . $player->arena->img) }}"
@@ -274,9 +276,9 @@
                         borderWidth: 1
                     }],
                     labels: [
-                        '{{ $player->losses }} {{ trans("html.player.losses") }}',
-                        '{{ $player->wins }} {{ trans("html.player.wins") }}',
-                        '{{ $player->battleCount - ($player->wins + $player->losses) }} {{ trans("html.player.ties_2v2") }}'
+                        '{{ trans("html.player.losses") }}',
+                        '{{ trans("html.player.wins") }}',
+                        '{{ trans("html.player.ties_2v2") }}'
                     ],
                 },
             });
@@ -286,11 +288,11 @@
                 type: 'bar',
                 data: {
                     labels: [
-                        '% {{ trans("html.player.wins") }}/{{ trans("html.player.losses") }}'
+                        '{{ trans("html.player.wins") }} / {{ trans("html.player.losses") }}'
                     ],
                     datasets: [
                         {
-                            label: '{{ $player->win_percent }} % {{ trans("html.player.wins") }}',
+                            label: '% {{ trans("html.player.wins") }}',
                             data: [
                                 {{ $player->win_percent }},
                             ],
@@ -304,7 +306,7 @@
                             borderWidth: 1
                         },
                         {
-                            label: '{{ $player->losses_percent }} % {{ trans("html.player.losses") }}',
+                            label: '% {{ trans("html.player.losses") }}',
                             data: [
                                 {{ $player->losses_percent }}
                             ],
@@ -322,12 +324,20 @@
                 options: {
                     scales: {
                         yAxes: [{
+                            display: true,
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 5,
+                                max: 100
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: '%'
                             }
                         }]
                     }
-                },
+                }
             });
         </script>
 
