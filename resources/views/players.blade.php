@@ -192,7 +192,7 @@
 
     <div class="card">
 
-        <h5 class="card-header text-white bg-dark">{{ trans('html.player.current') }}</h5>
+        <h5 class="card-header text-white bg-dark">{{ trans('html.player.current_deck') }}</h5>
 
         <div class="card-body">
             <div class="row">
