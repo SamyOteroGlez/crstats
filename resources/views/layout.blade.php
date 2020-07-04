@@ -14,6 +14,9 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.png') }}"/>
 
+        <script data-ad-client="ca-pub-6105733466578208"
+            async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     </head>
 
     <body>
