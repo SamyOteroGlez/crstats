@@ -28,9 +28,9 @@ Route::post('/player/tag', [
 
 Route::get('/invictus', function () {
     return redirect()->route('home');
-})->middleware(['default-clan', 'log']);
+})->middleware(['default-clan']);
 
-Route::middleware(['check-tag-session', 'log'])->group(function () {
+Route::middleware(['check-tag-session'])->group(function () {
 
     Route::get('/home', [
         'as' => 'home',
