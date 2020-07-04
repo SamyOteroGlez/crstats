@@ -16,6 +16,13 @@ class VisitsLogService
         return new VisitsLogService;
     }
 
+    /**
+     * Save a visit log.
+     *
+     * @param array $data
+     *
+     * @return void
+     */
     public function save(array $data)
     {
         $log = new VisitLog();
