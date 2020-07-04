@@ -3,46 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Services\RestMembersService;
+use App\Http\Services\VisitsLogService;
 
 class RestController extends Controller
 {
     /**
-     * Get all players in the clan.
+     * Get the amount of visit logs.
      *
-     * @param \App\Http\Services\RestMembersService $members
-     *
-     * @return json
-     */
-    public function allPlayers(RestMembersService $members)
-    {
-        return response()->json($members->all());
-    }
-
-    /**
-     * Get a player based on the tag.
-     *
-     * @param \App\Http\Services\RestMembersService $members
-     * @param string $name
+     * @param \App\Http\Services\VisitsLogService $service
      *
      * @return json
      */
-    public function player(RestMembersService $members, string $player_name = null)
+    public function visitsLog(VisitsLogService $service)
     {
-        $result = null;
-
-        if ($player_name) {
-            $players = collect($members->all()['items']);
-            $player = $players->firstWhere('name', $player_name);
-
-            if ($player) {
-                $player['tag'] = tagParser($player['tag']);
-                $result = $player;
-            }
-        }
-
         return response()->json([
-            'player' => $result
+            'magic_number' => $service->count(),
+            'landing' => $service->countLanding(),
+            'clan_tag' => $service->countClanTag(),
+            'player_tag' => $service->countPlayerTag(),
         ]);
     }
 }

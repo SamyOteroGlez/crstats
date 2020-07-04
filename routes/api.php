@@ -13,12 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/players', [
-//     'as' => 'players',
-//     'uses' => 'RestController@allPlayers',
-// ]);
+Route::group([
+    'prefix' => '/v1',
+    'as' => 'v1.',
+], function () {
 
-// Route::get('/player/{player_name?}', [
-//     'as' => 'player',
-//     'uses' => 'RestController@player',
-// ]);
+    Route::get('/cloverpath/cr/magic/number', [
+        'as' => 'visits.log',
+        'uses' => 'RestController@visitsLog',
+    ]);
+});
