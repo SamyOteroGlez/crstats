@@ -14,21 +14,21 @@
 Route::get('/', [
     'as' => 'landing',
     'uses' => 'SiteController@landing',
-])->middleware('flush-tag');
+])->middleware(['flush-tag', 'log']);
 
 Route::post('/clan/tag', [
     'as' => 'clan.tag',
     'uses' => 'SiteController@clanTag',
-])->middleware(['clan-tag']);
+])->middleware(['clan-tag', 'log']);
 
 Route::post('/player/tag', [
     'as' => 'player.tag',
     'uses' => 'SiteController@playerTag',
-])->middleware('player-tag');
+])->middleware(['player-tag', 'log']);
 
 Route::get('/invictus', function () {
     return redirect()->route('home');
-})->middleware('default-clan');
+})->middleware(['default-clan']);
 
 Route::middleware(['check-tag-session'])->group(function () {
 
@@ -51,11 +51,6 @@ Route::middleware(['check-tag-session'])->group(function () {
         'as' => 'stats',
         'uses' => 'SiteController@stats',
     ]);
-
-    // Route::get('/other', [
-    //     'as' => 'other',
-    //     'uses' => 'SiteController@other',
-    // ]);
 
     Route::get('/policy', [
         'as' => 'policy',

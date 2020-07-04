@@ -63,6 +63,10 @@ class Kernel extends HttpKernel
         'check-tag-session' => [
             \App\Http\Middleware\CheckTagSessionMiddleware::class,
         ],
+
+        'log' => [
+            \App\Http\Middleware\VisitsLogMiddleware::class,
+        ],
     ];
 
     /**
