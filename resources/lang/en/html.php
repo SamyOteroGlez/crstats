@@ -61,7 +61,7 @@ return [
         'members' => 'Members',
         'name' => 'Name',
         'cards' => 'Win Cards',
-        'x_of_y' => 'de',
+        'x_of_y' => 'of',
     ],
 
     'stats' => [
