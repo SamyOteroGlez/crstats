@@ -23,4 +23,16 @@ class RestController extends Controller
             'player_tag' => $service->countPlayerTag(),
         ]);
     }
+
+    /**
+     * Get the visits logs.
+     *
+     * @param \App\Http\Services\VisitsLogService $service
+     *
+     * @return json
+     */
+    public function visits(VisitsLogService $service)
+    {
+        return response()->json($service->get());
+    }
 }

@@ -68,4 +68,9 @@ class VisitsLogService
     {
         return VisitLog::where('data', 'like', '%"REQUEST_URI":"\/player\/tag"%')->count();
     }
+
+    public function get()
+    {
+        return VisitLog::paginate();
+    }
 }

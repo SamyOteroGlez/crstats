@@ -14,12 +14,17 @@ use Illuminate\Http\Request;
 */
 
 Route::group([
-    'prefix' => '/v1',
+    'prefix' => '/v1/{secret}',
     'as' => 'v1.',
 ], function () {
 
     Route::get('/cloverpath/cr/magic/number', [
         'as' => 'visits.log',
         'uses' => 'RestController@visitsLog',
+    ]);
+
+    Route::get('/cloverpath/cr/visits', [
+        'as' => 'visits',
+        'uses' => 'RestController@visits',
     ]);
 });
