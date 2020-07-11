@@ -23,6 +23,50 @@ body {
     display: none;
 }
 
+.card,
+.card-image {
+    transition: .3s ease-out;
+}
+
+.card-image {
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.card:hover,
+.card-image:hover {
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14),
+                        0 1px 7px 0 rgba(0,0,0,0.12),
+                        0 3px 1px -1px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14),
+                0 1px 7px 0 rgba(0,0,0,0.12),
+                0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.card-extra {
+    width: 10rem;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+h5.card-title {
+    font-size: 12px;
+}
+
+p.card-text {
+    font-size: 10px;
+}
+
+@media (min-width: 768px) {
+    h5.card-title {
+        font-size: 1rem;
+    }
+
+    p.card-text {
+        font-size: 10px;
+    }
+}
+
 footer {
     max-height: 500px;
     background-color: white;;
