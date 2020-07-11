@@ -103,7 +103,7 @@ return [
         'challenge_cards' => 'Cartas en Desafio',
         'challenge_wins' => 'Victorias en Desafio',
         'tournament_cards' => 'Carta en Torneos',
-        'tournament_battles' => 'Battalas en Torneos',
+        'tournament_battles' => 'Batallas en Torneos',
         'donations' => 'Donaciones',
         'donations_received' => 'Donaciones Recibidas',
         'donations_total' => 'Donaciones Totales',

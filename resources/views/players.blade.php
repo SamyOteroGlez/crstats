@@ -138,7 +138,7 @@
 
                 <image src="{{ asset('/images/ui/battle.png') }}" width="30px" class="ml-4"
                     title="{{ trans('html.player.tournament_battles') }}"></image>
-                <b>{{ trans('html.player.torunament_battles') }}:</b> {{ $player->tournamentBattleCount }}
+                <b>{{ trans('html.player.tournament_battles') }}:</b> {{ $player->tournamentBattleCount }}
             </p>
             <div class="clearfix"></div>
             <p>
