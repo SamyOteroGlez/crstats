@@ -61,9 +61,11 @@
                         width="30px" title="{{ trans('html.player.current_season') }}"></image>
                     {{ $player->leagueStatistics->currentSeason->trophies }}
 
+                    @if (property_exists($player->leagueStatistics->currentSeason, 'bestTrophies'))
                     <image src="{{ asset('/images/ui/leaderboard.png') }}" width="30px" class="ml-4"
                         title="{{ trans('html.player.best_score') }}"></image>
                     <b>{{ trans('html.player.best_score') }}:</b> {{ $player->leagueStatistics->currentSeason->bestTrophies }}
+                    @endif
                 </p>
                 @endif
 
